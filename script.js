@@ -9,28 +9,25 @@ const addSampleBtn = document.getElementById("addSampleBtn");
 const eventContainer = document.getElementById("eventContainer");
 
 
-let sampleEvent =
-    [
+let sampleEvent = [
         {
             title: "Web dev",
             date: "4-12-2026",
             category: "workshop",
-            description: "hasvhuno oadhoo asoikla dfoi"
+            description: "interesting description 1"
         },
         {
             title: "Web dev2",
             date: "5-12-2026",
             category: "conference",
-            description: "hasvhuno oadshdbf hoo asoikla dfoi"
+            description: "interesting description 2"
         }
     ]
 
-// add sample events
 addSampleBtn.addEventListener("click", () => {
     sampleEvent.forEach(addEvent);
 })
-
-//   create event card  
+ 
 function createEventCard(eventData) {
     const card = document.createElement("div");
     card.innerHTML = `
@@ -40,18 +37,24 @@ function createEventCard(eventData) {
     <span>${eventData.category}</span>
     <p>${eventData.description}</p>
     `
-    return card;
 
+    const deleteBtn = card.querySelector(".delete-btn");
+    deleteBtn.addEventListener("click", () => {
+        card.remove();
+
+        if (!eventContainer.firstElementChild) {
+            eventContainer.innerHTML = `<div class="empty-state">No events yet</div>`;
+        }
+    });
+    return card;
 }
 
 function addEvent(eventData) {
     const emptyState = document.querySelector(".empty-state");
     if (emptyState) emptyState.remove();
-
     eventContainer.appendChild(createEventCard(eventData));
 
 }
-
 
 eventForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -61,7 +64,6 @@ eventForm.addEventListener("submit", (event) => {
         category: eventCategory.value,
         description: eventDescription.value
     }
-
     addEvent(eventData);
     eventForm.reset();
 
