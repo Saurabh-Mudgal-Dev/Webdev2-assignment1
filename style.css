@@ -122,7 +122,7 @@ button[type="submit"] {
   border-radius: 8px;
 }
 
-#eventContainer > div {
+#eventContainer>div {
   background: rgb(232, 244, 248);
   padding: 20px;
   margin-bottom: 15px;
@@ -168,6 +168,24 @@ button[type="submit"] {
   color: rgb(255, 255, 255);
   border: none;
   cursor: pointer;
+}
+
+button[type="submit"]:hover,
+.controls button:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 3px 5px 15px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+
+#eventContainer>div:hover {
+  transform: scale(1.02) translateY(-5px);
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+}
+
+#eventContainer>div:active {
+  background: rgb(255, 200, 150);
+  transform: scale(0.98);
 }
 
 @media (max-width: 768px) {
