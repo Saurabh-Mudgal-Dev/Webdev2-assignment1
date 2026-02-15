@@ -72,3 +72,8 @@ eventForm.addEventListener("submit", (event) => {
 clearAllBtn.addEventListener("click", () => {
     eventContainer.innerHTML = `<div class="empty-state">No events yet</div>`;
 })
+
+document.addEventListener("keydown", (e) => {
+    const demoContent = document.getElementById("demoContent");
+    demoContent.textContent = `You pressed: ${e.key}`;
+});
